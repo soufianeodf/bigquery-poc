@@ -1,10 +1,11 @@
-package io.github.soufianeodf.bigquerypoc.model;
+package io.github.soufianeodf.bigquerypoc.service;
 
 import com.google.api.gax.paging.Page;
 import com.google.cloud.bigquery.*;
 import com.google.cloud.bigquery.BigQuery.TableDataListOption;
 import com.google.cloud.bigquery.JobStatistics.LoadStatistics;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -19,7 +20,8 @@ import java.util.UUID;
 import static com.google.cloud.bigquery.BigQuery.TableListOption.pageSize;
 
 @Slf4j
-public class BigQueryTable {
+@Service
+public class BigQueryTableService {
 
     public void createTable(BigQuery bigquery, String datasetName, String tableName, Schema schema) {
         try {

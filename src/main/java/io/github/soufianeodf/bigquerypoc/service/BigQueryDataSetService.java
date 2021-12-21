@@ -1,10 +1,11 @@
-package io.github.soufianeodf.bigquerypoc.model;
+package io.github.soufianeodf.bigquerypoc.service;
 
 import com.google.api.gax.paging.Page;
 import com.google.cloud.bigquery.*;
 import com.google.cloud.bigquery.BigQuery.DatasetDeleteOption;
 import com.google.cloud.bigquery.BigQuery.DatasetListOption;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -12,7 +13,8 @@ import java.util.Map;
 import static com.google.cloud.bigquery.BigQuery.TableListOption.*;
 
 @Slf4j
-public class BigQueryDataSet {
+@Service
+public class BigQueryDataSetService {
 
     public void createDataSet(BigQuery bigquery, String datasetName) {
         try {

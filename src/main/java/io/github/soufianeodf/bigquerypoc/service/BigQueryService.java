@@ -67,7 +67,13 @@ public class BigQueryService {
 
 //        Path jsonPath = FileSystems.getDefault().getPath(".", "my-data.csv");
         Path jsonPath = Paths.get(ClassLoader.getSystemResource("datasets/electronic-card-transactions.csv").toURI());
-        bigQueryTableService.loadLocalFile(bigQuery, temporary_dataset, temporary_table, jsonPath, FormatOptions.csv(), true);
+        bigQueryTableService.loadLocalFile(bigQuery,
+                temporary_dataset,
+                temporary_table,
+                jsonPath,
+                FormatOptions.csv(),
+                true,
+                "us");
     }
 
     @SneakyThrows

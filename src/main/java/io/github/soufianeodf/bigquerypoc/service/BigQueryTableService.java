@@ -146,7 +146,15 @@ public class BigQueryTableService {
         }
     }
 
-    public void loadLocalFile(BigQuery bigquery, String datasetName, String tableName, Path csvPath, FormatOptions formatOptions, boolean autodetectSchema) throws IOException, InterruptedException {
+    public void loadLocalFile(BigQuery bigquery,
+                              String datasetName,
+                              String tableName,
+                              Path csvPath,
+                              FormatOptions formatOptions,
+                              boolean autodetectSchema,
+                              String location
+    )
+            throws IOException, InterruptedException {
         try {
             TableId tableId = TableId.of(datasetName, tableName);
 
@@ -157,7 +165,7 @@ public class BigQueryTableService {
 
             // The location and JobName must be specified; other fields can be auto-detected.
             String jobName = "jobId_" + UUID.randomUUID();
-            JobId jobId = JobId.newBuilder().setLocation("us").setJob(jobName).build();
+            JobId jobId = JobId.newBuilder().setLocation(location).setJob(jobName).build();
 
             // Imports a local file into a table.
             try (TableDataWriteChannel writer = bigquery.writer(jobId, writeChannelConfiguration);
